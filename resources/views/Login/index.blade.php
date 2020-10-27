@@ -9,18 +9,19 @@
                         <h3>Login</h3>
                     </div>
                     <div class="card-body">
-                        <form action="#" method="post" id="loginForm">
+                        <form action="{{ route('login') }}" method="post" id="loginForm">
+                            @csrf
+
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <input type="email" name="email" class="form-control form-control-sm" value="" required>
+                                <input type="email" name="email" class="form-control form-control-sm" value="{{ old('email') }}" required>
+                                @error('error')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label for="password">Password</label>
                                 <input type="password" class="form-control form-control-sm" name="password" value="" id="password" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="checkbox" name="remember_me" >
-                                <label for="remember_me">Remember me</label>
                             </div>
                             <input type="submit" name="submit" class="btn btn-success" value="Submit">
                             <a class="float-right" href="#">Forgot password ?</a>

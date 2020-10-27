@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SignupController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UserController;
+use App\Http\Middleware\checkLogin;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,10 +19,18 @@ use App\Http\Controllers\LoginController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
 Route::get('/register', [SignupController::class, 'index'])->name('register');
 Route::post('/register', [SignupController::class, 'store']);
 Route::get('activation/{token}', [SignupController::class, 'activation'])->name('activation');
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
+Route::post('/login', [LoginController::class, 'login']);
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::get('/user', [UserController::class, 'index'])->middleware('checkLogin')->name('user');
+
+Route::get('/resetmail', function () {
+    return view('Password.mail');
+})->name('resetmail');

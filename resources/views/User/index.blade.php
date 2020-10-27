@@ -22,24 +22,18 @@
                   <a class="navbar-brand" href="http://localhost/laravel_login/public/">Log in App</a>
                   
                   <ul class="navbar-nav flex-row ml-auto">
-                        @if(session()->has('user_email'))
-                            <li class="nav-item">
-                                <a href="{{ route('user') }}" class="nav-link">Dashboard</a>
-                            </li>
-                        @else 
-                            <li class="nav-item mr-2">
-                                <a href="{{ route('login') }}" class="nav-link">Login</a>
-                            </li>
+                        <li class="nav-item mr-2">
+                                <a href="{{ route('home') }}" class="nav-link">Home</a>
+                        </li>
                         
-                            <li class="nav-item">
-                                <a href="{{ route('register') }}" class="nav-link">Register</a>
-                            </li>
-                        @endif          
-                      
+                        <li class="nav-item">
+                                <a href="{{ route('logout') }}" class="nav-link">Logout</a>
+                        </li>
                   </ul>
             </nav>
 
-            @yield('content')
+            <div class="display-4 text-center mt-5">Welcome {{ $user->name }}</div>
+
 
         </div>            
 
