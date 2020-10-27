@@ -24,7 +24,7 @@
                                 <input type="password" class="form-control form-control-sm" name="password" value="" id="password" required>
                             </div>
                             <input type="submit" name="submit" class="btn btn-success" value="Submit">
-                            <a class="float-right" href="#">Forgot password ?</a>
+                        <a class="float-right" href="{{ route('resetmail') }}">Forgot password ?</a>
                         </form>
                     </div>
                 </div>

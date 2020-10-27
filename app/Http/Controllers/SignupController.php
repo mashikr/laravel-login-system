@@ -39,12 +39,12 @@ class SignupController extends Controller
 
         Mail::to($user->email)->send(new AccountActivation($user->account_active_hash));
 
-        return view('Register.success');
+        return redirect('/register/success');
     }
 
     public function activation($token) {
         $user = User::where('account_active_hash', $token)->update(['active' => 1, 'account_active_hash' => 1]);
 
-        return view('Register.activesuccess');
+        return redirect('/register/active');
     }
 }
