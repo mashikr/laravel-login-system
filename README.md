@@ -8,5 +8,4 @@ login and registration system by Laravel
 2. Activate account by email
 3. Login and remember me option
 4. Recover password
-5. Profile data show
 ```
